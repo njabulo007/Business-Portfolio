@@ -1,0 +1,38 @@
+/* Navbar Styling */
+#navbar {
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+#navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Section Padding */
+section {
+    padding: 60px 0;
+}
+
+/* Smooth transition for images */
+img {
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+/* Text Centering */
+.text-center {
+    text-align: center;
+}
+
+/* Button Styling */
+.btn-warning {
+    background-color: #f8b400;
+    border-color: #f8b400;
+}
+
+.btn-warning:hover {
+    background-color: #ffcc00;
+}
