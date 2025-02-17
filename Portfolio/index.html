@@ -8,21 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Animated Background Canvas -->
+    <!-- Particle Background -->
     <canvas class="particles-canvas"></canvas>
-    
-    <!-- Hero Section with Parallax -->
-    <section class="hero parallax" data-speed="0.3">
+
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="hero-content">
             <h1 class="text-pop">Crafting Digital Excellence</h1>
             <button class="cta-pulse">Start Your Journey</button>
         </div>
     </section>
 
-    <!-- Services Section with Hover Effects -->
+    <!-- Services Section -->
     <section class="services">
+        <h2>Our Services</h2>
         <div class="service-grid">
-            <!-- Service Card 1 - Web Design -->
+            <!-- Web Design -->
             <div class="service-card" style="background-image: url('images/web-design.jpg')">
                 <div class="card-content">
                     <i class="fas fa-palette fa-3x"></i>
@@ -31,35 +32,62 @@
                     <div class="shine"></div>
                 </div>
             </div>
-            
-            <!-- Add more service cards following the same pattern -->
+            <!-- Web Development -->
+            <div class="service-card" style="background-image: url('images/development.jpg')">
+                <div class="card-content">
+                    <i class="fas fa-code fa-3x"></i>
+                    <h3>Web Development</h3>
+                    <p>Custom solutions built with cutting-edge technology</p>
+                    <div class="shine"></div>
+                </div>
+            </div>
+            <!-- Product Photography -->
+            <div class="service-card" style="background-image: url('images/photography.jpg')">
+                <div class="card-content">
+                    <i class="fas fa-camera fa-3x"></i>
+                    <h3>Product Photography</h3>
+                    <p>High-quality visuals to showcase your products</p>
+                    <div class="shine"></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Interactive Portfolio Grid -->
+    <!-- Portfolio Section -->
     <section class="portfolio">
+        <h2>Our Work</h2>
         <div class="gallery-grid">
-            <!-- Portfolio Item 1 -->
+            <!-- Project 1 -->
             <div class="portfolio-item" data-project="1">
                 <img src="images/projects/project1.jpg" alt="E-commerce Project">
                 <div class="item-overlay">
-                    <button class="view-btn">360° View</button>
+                    <button class="view-btn">View Project</button>
                 </div>
             </div>
-            <!-- Add more portfolio items -->
+            <!-- Project 2 -->
+            <div class="portfolio-item" data-project="2">
+                <img src="images/projects/project2.jpg" alt="Portfolio Website">
+                <div class="item-overlay">
+                    <button class="view-btn">View Project</button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Animated Contact Form -->
+    <!-- Contact Section -->
     <section class="contact">
+        <h2>Let's Create Magic</h2>
         <form class="floating-form">
-            <h2 class="form-title">Let's Create Magic</h2>
             <div class="input-group">
                 <input type="text" id="name" required>
                 <label for="name">Your Name</label>
                 <span class="input-focus"></span>
             </div>
-            <!-- Add more form fields -->
+            <div class="input-group">
+                <input type="email" id="email" required>
+                <label for="email">Your Email</label>
+                <span class="input-focus"></span>
+            </div>
             <button type="submit" class="submit-btn">
                 <span>Launch Project</span>
                 <i class="fas fa-rocket"></i>

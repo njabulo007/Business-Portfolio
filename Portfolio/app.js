@@ -1,16 +1,17 @@
-// Enhanced Interactive Features
+// Particle Background
+const canvas = document.querySelector('.particles-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-// 1. Floating Particles Animation (Improved Performance)
 class Particle {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
+    constructor() {
         this.reset();
     }
 
     reset() {
-        this.x = Math.random() * this.canvas.width;
-        this.y = Math.random() * this.canvas.height;
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
         this.velocity = Math.random() * 2 + 1;
         this.radius = Math.random() * 2;
         this.alpha = Math.random() * 0.5 + 0.3;
@@ -18,71 +19,31 @@ class Particle {
 
     update() {
         this.y += this.velocity;
-        if (this.y > this.canvas.height + 50) this.reset();
+        if (this.y > canvas.height + 50) this.reset();
     }
 
     draw() {
-        this.ctx.beginPath();
-        this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        this.ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
-        this.ctx.fill();
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
+        ctx.fill();
     }
 }
 
-// 2. Parallax Scrolling Effect
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    document.querySelector('.hero').style.backgroundPositionY = 
-        `${scrolled * 0.3}px`;
-});
+const particles = Array.from({ length: 100 }, () => new Particle());
 
-// 3. Interactive Service Cards
-document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        card.style.transform = `
-            perspective(1000px)
-            rotateX(${(y - rect.height/2) / 15}deg)
-            rotateY(${-(x - rect.width/2) / 15}deg)
-            scale(1.05)
-        `;
-        
-        card.querySelector('.shine').style.background = `
-            radial-gradient(
-                circle at ${x}px ${y}px,
-                rgba(255,255,255,0.5) 0%,
-                rgba(255,255,255,0) 80%
-            )
-        `;
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(particle => {
+        particle.update();
+        particle.draw();
     });
+    requestAnimationFrame(animate);
+}
+animate();
 
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-        card.querySelector('.shine').style.background = 'none';
-    });
-});
-
-// 4. Portfolio Item Interactions
-document.querySelectorAll('.portfolio-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-        if(!e.target.closest('.view-btn')) return;
-        item.classList.toggle('expanded');
-        document.body.classList.toggle('no-scroll');
-    });
-});
-
-// 5. Form Input Animations
-document.querySelectorAll('.input-group input').forEach(input => {
-    input.addEventListener('focus', () => {
-        input.parentNode.querySelector('.input-focus').style.width = '100%';
-    });
-    
-    input.addEventListener('blur', () => {
-        if(!input.value) {
-            input.parentNode.querySelector('.input-focus').style.width = '0';
-        }
-    });
+// Resize Canvas on Window Resize
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 });
