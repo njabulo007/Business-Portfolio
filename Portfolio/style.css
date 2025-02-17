@@ -1,3 +1,6 @@
+/* Importing Poppins Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 /* Color Palette */
 :root {
     --primary: #2a2a72;       /* Deep blue */
@@ -32,6 +35,8 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative; /* To ensure content is stacked above the particles */
+    z-index: 1; /* Ensure content is on top of the particles */
 }
 
 .hero h1 {
@@ -40,9 +45,20 @@ body {
     animation: text-pop 1s ease-out;
 }
 
-@keyframes text-pop {
-    0% { transform: scale(0.9); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+.hero button.cta-pulse {
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    color: var(--white);
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero button.cta-pulse:hover {
+    transform: scale(1.1);
+    background-color: var(--accent);
 }
 
 /* Service Cards */
@@ -140,3 +156,25 @@ body {
     font-size: 0.8rem;
     color: var(--secondary);
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .service-grid {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Particle Background */
+.particles-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* This will make the particles appear behind everything else */
+}
+
+/* Rest of your CSS remains unchanged */
