@@ -1,100 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechVision | Web Solutions</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Web Development Company | Stunning Digital Solutions</title>
+   <!-- Link to Google Fonts for H1 and P -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Lato:wght@400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <!-- Particle Background -->
-    <canvas class="particles-canvas"></canvas>
+  <!-- Header -->
+  <header id="navbar">
+    <div class="container">
+      <h1>NextGen Web Solutions</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="text-pop">Crafting Digital Excellence</h1>
-            <button class="cta-pulse">Start Your Journey</button>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h2>We Create Stunning Digital Experiences</h2>
+      <p>Specializing in web design, development, SEO optimization, and product photography.</p>
+      <div class="cta">
+        <a href="#portfolio" class="btn">View Our Work</a>
+        <a href="#contact" class="btn btn-secondary">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>We are a team of passionate designers, developers, and creatives dedicated to helping businesses succeed online. Our mission is to deliver high-quality, innovative solutions tailored to your needs.</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="service-cards">
+        <div class="card">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Web Design & Development</h3>
+          <p>We create stunning, responsive websites tailored to your brand and business goals.</p>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services">
-        <h2>Our Services</h2>
-        <div class="service-grid">
-            <!-- Web Design -->
-            <div class="service-card" style="background-image: url('images/web-design.jpg')">
-                <div class="card-content">
-                    <i class="fas fa-palette fa-3x"></i>
-                    <h3>Web Design</h3>
-                    <p>Beautiful, user-centric designs that convert</p>
-                    <div class="shine"></div>
-                </div>
-            </div>
-            <!-- Web Development -->
-            <div class="service-card" style="background-image: url('images/development.jpg')">
-                <div class="card-content">
-                    <i class="fas fa-code fa-3x"></i>
-                    <h3>Web Development</h3>
-                    <p>Custom solutions built with cutting-edge technology</p>
-                    <div class="shine"></div>
-                </div>
-            </div>
-            <!-- Product Photography -->
-            <div class="service-card" style="background-image: url('images/photography.jpg')">
-                <div class="card-content">
-                    <i class="fas fa-camera fa-3x"></i>
-                    <h3>Product Photography</h3>
-                    <p>High-quality visuals to showcase your products</p>
-                    <div class="shine"></div>
-                </div>
-            </div>
+        <div class="card">
+          <i class="fas fa-camera"></i>
+          <h3>Product Photography</h3>
+          <p>High-quality product images that make your products stand out and attract customers.</p>
         </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio">
-        <h2>Our Work</h2>
-        <div class="gallery-grid">
-            <!-- Project 1 -->
-            <div class="portfolio-item" data-project="1">
-                <img src="images/projects/project1.jpg" alt="E-commerce Project">
-                <div class="item-overlay">
-                    <button class="view-btn">View Project</button>
-                </div>
-            </div>
-            <!-- Project 2 -->
-            <div class="portfolio-item" data-project="2">
-                <img src="images/projects/project2.jpg" alt="Portfolio Website">
-                <div class="item-overlay">
-                    <button class="view-btn">View Project</button>
-                </div>
-            </div>
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>SEO Optimization</h3>
+          <p>Boost your online presence with our expert SEO strategies and drive more traffic to your website.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section class="contact">
-        <h2>Let's Create Magic</h2>
-        <form class="floating-form">
-            <div class="input-group">
-                <input type="text" id="name" required>
-                <label for="name">Your Name</label>
-                <span class="input-focus"></span>
-            </div>
-            <div class="input-group">
-                <input type="email" id="email" required>
-                <label for="email">Your Email</label>
-                <span class="input-focus"></span>
-            </div>
-            <button type="submit" class="submit-btn">
-                <span>Launch Project</span>
-                <i class="fas fa-rocket"></i>
-            </button>
-        </form>
-    </section>
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <h2>Our Portfolio</h2>
+      <div class="gallery">
+        <div class="item">
+          <img src="images/project1.jpg" alt="Project 1">
+          <div class="overlay">
+            <h3>Project 1</h3>
+            <p>Web Design & Development</p>
+          </div>
+        </div>
+        <div class="item">
+          <img src="images/project2.jpg" alt="Project 2">
+          <div class="overlay">
+            <h3>Project 2</h3>
+            <p>Product Photography</p>
+          </div>
+        </div>
+        <div class="item">
+          <img src="images/project3.jpg" alt="Project 3">
+          <div class="overlay">
+            <h3>Project 3</h3>
+            <p>SEO Optimization</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="app.js"></script>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Let’s Work Together</h2>
+      <p>Ready to take your business to the next level? Get in touch with us today!</p>
+      <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Your Company. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
