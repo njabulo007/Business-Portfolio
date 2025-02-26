@@ -221,6 +221,22 @@ body {
   transition: all .3s;
 }
 
+/*PROMO BUTTON REMOVE AFTER CLIENTS ARE LISTED ON PROJECTS*/
+
+#promo-button a {
+  display: inline-block;
+  background-color: #4771cb;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 12px 25px;
+  border-radius: 23px;
+  letter-spacing: 0.25px;
+  border-bottom: 2px solid #fff!important;
+  transition: all .3s;
+}
+
 .main-blue-button a:hover {
   background-color: #fff!important;
   color: #4771cb!important;
