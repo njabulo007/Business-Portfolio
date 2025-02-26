@@ -119,3 +119,9 @@ Highlight any relevant certifications, courses, or training you’ve completed i
 Blog or Content Samples
 
 Write blog posts or create content (e.g., social media posts, ad copy) that demonstrates your expertise and creativity.
+
+Modern Gradient
+Primary: Electric Blue (#3B82F6)
+Secondary: Neon Pink (#FF497C)
+Accent: Lime Green (#A3E635)
+Background: Dark Charcoal (#1F2937)
