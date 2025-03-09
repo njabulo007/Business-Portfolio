@@ -702,7 +702,7 @@ header
   .header-area .container {
     padding: 0px;
   }
-  .header-area .logo {
+  .header-area {
     margin-left: 30px;
   }
   .header-area .menu-trigger {
@@ -1689,8 +1689,8 @@ responsive
 }
 
 .logo{
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
 }
 
 @media (max-width: 992px) {
@@ -1784,3 +1784,4 @@ responsive
     padding: 30px;
   }
 }
+
