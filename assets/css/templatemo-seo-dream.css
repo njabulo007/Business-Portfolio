@@ -1790,5 +1790,5 @@ responsive
     position: absolute;
     top: 0;
     right: 0; /* Positions the child at the top-right corner of the parent */
-  
+    bottom: 5;
 }
