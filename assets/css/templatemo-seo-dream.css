@@ -919,7 +919,7 @@ Banner Style
 
 .main-banner:before {
   content: '';
-  background-image: url(../images/banner-dec-right.png);
+  background-image: url(../images/banner-dec-right.svg);
   background-repeat: no-repeat;
   position: absolute;
   right: 0;
