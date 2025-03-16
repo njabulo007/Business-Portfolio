@@ -1781,3 +1781,13 @@ responsive
   }
 }
 
+#logo img {
+  width: auto;
+  height: auto; /* Maintains aspect ratio */
+
+}
+
+#logo {
+  position: absolute;
+  z-index: 1000;
+}
