@@ -959,9 +959,9 @@ Banner Style
   color: #2a2a2a;
   line-height: 72px;
   background: #FA9D4D;
-  background: -webkit-linear-gradient(to right, #FA9D4D 0%, #8e3ffc 100%);
-  background: -moz-linear-gradient(to right, #FA9D4D 0%, #8e3ffc 100%);
-  background: linear-gradient(to right, #FA9D4D 0%, #8e3ffc 100%);
+  background: -webkit-linear-gradient(to right, #000000 0%, #8e3ffc 100%);
+  background: -moz-linear-gradient(to right, #000000 0%, #8e3ffc 100%);
+  background: linear-gradient(to right, #000000 0%, #8e3ffc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
