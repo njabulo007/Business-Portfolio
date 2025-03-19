@@ -256,3 +256,79 @@ ul li {
   background-image: linear-gradient(to left, #a55eea, #45aaf2);
   margin-top: 20px;
 }
+
+/* Add to existing CSS */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background: #4b7bec;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.pricing-section {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.pricing-tier {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.package-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 5px solid;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.special-package {
+  padding: 30px;
+  border-radius: 15px;
+  margin: 40px 0;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.price-range {
+  color: #4b7bec;
+  font-size: 1.4em;
+  margin: 15px 0;
+}
+
+.package-card.popular {
+  transform: scale(1.05);
+  background: #f8f9ff;
+}
+
+@media (max-width: 768px) {
+  .service-grid {
+      grid-template-columns: 1fr;
+  }
+  
+  .package-card {
+      margin: 15px 0;
+  }
+}
+
+/* Update color variables to match your brand */
+body {
+  --primary: #4b7bec;    /* Blue */
+  --secondary: #a55eea;  /* Purple */
+  --highlight: #26de81;  /* Green */
+  --accent: #f7b731;     /* Yellow */
+}
