@@ -1,90 +1,850 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing Plans</title>
-    <link rel="stylesheet" href="pricing.css">
-    <!-- Back Button -->
-    <a href="index.html" class="back-button">← Back to Home</a>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<a href="index.html" class="back-button">← Back to Home</a>
+<title>Pricing Plans</title>
+<style>
+    :root {
+        --primary-color: #4f46e5;
+        --secondary-color: #6366f1;
+        --accent-color: #f97316;
+        --light-color: #f3f4f6;
+        --dark-color: #1f2937;
+        --success-color: #22c55e;
+        --border-radius: 12px;
+        --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f8fafc;
+        color: var(--dark-color);
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--dark-color);
+        position: relative;
+        display: inline-block;
+    }
+
+    h1::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: var(--accent-color);
+        border-radius: 2px;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+        color: #64748b;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .tab-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+.back-button {
+position: fixed;
+top: 20px;
+left: 20px;
+padding: 10px 20px;
+background: #4b7bec;
+color: white;
+border-radius: 25px;
+text-decoration: none;
+box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+    .tab-btn {
+        background: none;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        color: #64748b;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .tab-btn.active {
+        color: var(--primary-color);
+    }
+
+    .tab-btn.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 25%;
+        width: 50%;
+        height: 3px;
+        background: var(--primary-color);
+        border-radius: 2px;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .pricing-card {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .pricing-card.popular::before {
+        content: 'POPULAR';
+        position: absolute;
+        top: 15px;
+        right: -30px;
+        background: var(--accent-color);
+        color: white;
+        padding: 5px 40px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        transform: rotate(45deg);
+    }
+
+    .card-header {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        color: var(--dark-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .card-price {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .card-price .currency {
+        font-size: 1.2rem;
+        font-weight: 600;
+        vertical-align: super;
+    }
+
+    .card-price .period {
+        font-size: 1rem;
+        color: #64748b;
+        font-weight: normal;
+    }
+
+    .card-description {
+        font-size: 0.9rem;
+        color: #64748b;
+    }
+
+    .feature-list {
+        list-style: none;
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .feature-icon {
+        color: var(--success-color);
+        margin-right: 0.75rem;
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+
+    .cta-button {
+        display: block;
+        width: 100%;
+        padding: 0.8rem;
+        text-align: center;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        text-decoration: none;
+    }
+
+    .cta-button:hover {
+        background: var(--secondary-color);
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
+    }
+
+    .modal-content {
+        background-color: white;
+        margin: 5% auto;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        max-width: 600px;
+        box-shadow: var(--shadow);
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .modal.active .modal-content {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .close-modal {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .close-modal:hover {
+        color: var(--dark-color);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: 1px solid #cbd5e0;
+        border-radius: var(--border-radius);
+        transition: border 0.3s ease;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: var(--primary-color);
+    }
+
+    .form-text {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: #64748b;
+    }
+
+    .submit-btn {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background: var(--secondary-color);
+    }
+
+    .single-services, .add-ons, .township-special {
+        margin-top: 4rem;
+    }
+
+    .service-title, .addon-title, .township-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: var(--dark-color);
+        text-align: center;
+        position: relative;
+    }
+
+    .service-title::after, .addon-title::after, .township-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--accent-color);
+        border-radius: 2px;
+    }
+
+    .service-items, .addon-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .service-item, .addon-item {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .service-item:hover, .addon-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .service-name, .addon-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--dark-color);
+    }
+
+    .service-price, .addon-price {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .township-card {
+        background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+        color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 2rem;
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .township-price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 1rem 0;
+    }
+
+    .township-features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+        text-align: left;
+        padding-left: 1rem;
+    }
+
+    .township-feature {
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .township-feature::before {
+        content: '✓';
+        margin-right: 0.5rem;
+        color: var(--light-color);
+        font-weight: bold;
+    }
+
+    .township-cta {
+        background: white;
+        color: var(--primary-color);
+    }
+
+    .township-cta:hover {
+        background: var(--light-color);
+    }
+
+    .selected-features {
+        margin-top: 1rem;
+    }
+
+    .selected-feature {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .selected-feature::before {
+        content: '✓';
+        margin-right: 0.5rem;
+        color: var(--success-color);
+        font-weight: bold;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .container {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .pricing-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .modal-content {
+            margin: 10% auto;
+            padding: 1.5rem;
+            max-width: 90%;
+        }
+    }
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- Existing Pricing Cards (Updated Colors) -->
-        <!-- ... (keep your existing card structure) ... -->
+<div class="container">
+    <header>
+        <h1>Pricing Plans</h1>
+        <p class="subtitle">Choose the perfect plan for your business needs. All plans include expert support and regular updates.</p>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" data-tab="packages">Package Deals</button>
+        <button class="tab-btn" data-tab="services">Single Services</button>
+        <button class="tab-btn" data-tab="addons">Add-Ons</button>
+        <button class="tab-btn" data-tab="township">Township-Special</button>
     </div>
 
-    <!-- New Pricing Section -->
-    <div class="pricing-section">
-        <h2>Digital Marketing Packages</h2>
+    <!-- Package Deals Tab -->
+    <div class="tab-content active" id="packages">
+        <div class="pricing-cards">
+            <!-- Basic Web Boost -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3 class="card-title">Basic Web Boost</h3>
+                    <div class="card-price"><span class="currency">R</span>2,500 - 4,000</div>
+                    <p class="card-description">Perfect for small businesses just getting started online</p>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>5-page responsive website</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Free template + customization</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>1-month basic SEO</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>2 product photos</span>
+                    </li>
+                </ul>
+                <button class="cta-button select-package" data-package="Basic Web Boost" data-price="R2,500 - R4,000">Select Package</button>
+            </div>
+
+            <!-- Growth Starter -->
+            <div class="pricing-card popular">
+                <div class="card-header">
+                    <h3 class="card-title">Growth Starter</h3>
+                    <div class="card-price"><span class="currency">R</span>6,000 - 8,000</div>
+                    <p class="card-description">Ideal for businesses looking to expand their digital presence</p>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>All Basic Web Boost features</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>3-month SEO</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>5 product photos</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>1 social media setup (FB/IG)</span>
+                    </li>
+                </ul>
+                <button class="cta-button select-package" data-package="Growth Starter" data-price="R6,000 - R8,000">Select Package</button>
+            </div>
+
+            <!-- Premium Digital -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3 class="card-title">Premium Digital</h3>
+                    <div class="card-price"><span class="currency">R</span>12,000<span class="period">+</span></div>
+                    <p class="card-description">Complete digital solution for established businesses</p>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Custom website (advanced HTML/CSS)</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>6-month SEO</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>10 product photos</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>3-month social media management</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Google Ads setup</span>
+                    </li>
+                </ul>
+                <button class="cta-button select-package" data-package="Premium Digital" data-price="R12,000+">Select Package</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Services Tab -->
+    <div class="tab-content" id="services">
+        <div class="single-services">
+            <h2 class="service-title">Single Services</h2>
+            <div class="service-items">
+                <div class="service-item">
+                    <h3 class="service-name">Web Design</h3>
+                    <div class="service-price">R1,500 - R4,000</div>
+                    <p>Professional website design based on complexity</p>
+                    <button class="cta-button select-service" data-service="Web Design" data-price="R1,500 - R4,000">Select Service</button>
+                </div>
+                <div class="service-item">
+                    <h3 class="service-name">SEO Optimization</h3>
+                    <div class="service-price">R800 - R1,500/month</div>
+                    <p>Basic to advanced search engine optimization</p>
+                    <button class="cta-button select-service" data-service="SEO Optimization" data-price="R800 - R1,500/month">Select Service</button>
+                </div>
+                <div class="service-item">
+                    <h3 class="service-name">Product Photography</h3>
+                    <div class="service-price">R150 - R300/photo</div>
+                    <p>Professional product photography services</p>
+                    <button class="cta-button select-service" data-service="Product Photography" data-price="R150 - R300 per photo">Select Service</button>
+                </div>
+                <div class="service-item">
+                    <h3 class="service-name">Social Media Ads</h3>
+                    <div class="service-price">R1,500 + R300/day</div>
+                    <p>Setup fee + daily management</p>
+                    <button class="cta-button select-service" data-service="Social Media Ads" data-price="R1,500 setup fee + R300/day management">Select Service</button>
+                </div>
+                <div class="service-item">
+                    <h3 class="service-name">Website Maintenance</h3>
+                    <div class="service-price">R300 - R800/month</div>
+                    <p>Regular website maintenance and updates</p>
+                    <button class="cta-button select-service" data-service="Website Maintenance" data-price="R300 - R800/month">Select Service</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add-Ons Tab -->
+    <div class="tab-content" id="addons">
+        <div class="add-ons">
+            <h2 class="addon-title">Add-Ons</h2>
+            <div class="addon-items">
+                <div class="addon-item">
+                    <h3 class="addon-name">Domain + Hosting Setup</h3>
+                    <div class="addon-price">R500</div>
+                    <p>One-time setup fee for domain and hosting</p>
+                    <button class="cta-button select-addon" data-addon="Domain + Hosting Setup" data-price="R500 (one-time)">Select Add-On</button>
+                </div>
+                <div class="addon-item">
+                    <h3 class="addon-name">WhatsApp Business Integration</h3>
+                    <div class="addon-price">R200</div>
+                    <p>Integrate WhatsApp Business with your website</p>
+                    <button class="cta-button select-addon" data-addon="WhatsApp Business Integration" data-price="R200">Select Add-On</button>
+                </div>
+                <div class="addon-item">
+                    <h3 class="addon-name">Monthly Analytics Report</h3>
+                    <div class="addon-price">R300</div>
+                    <p>Detailed monthly analytics report</p>
+                    <button class="cta-button select-addon" data-addon="Monthly Analytics Report" data-price="R300">Select Add-On</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Township-Special Tab -->
+    <div class="tab-content" id="township">
+        <div class="township-special">
+            <h2 class="township-title">Township-Special Package</h2>
+            <div class="township-card">
+                <h3 class="card-title">Local Business Boost</h3>
+                <div class="township-price">R3,500</div>
+                <p>One-time payment</p>
+                <ul class="township-features">
+                    <li class="township-feature">Mobile-friendly 3-page website</li>
+                    <li class="township-feature">Google My Business setup</li>
+                    <li class="township-feature">1-month local SEO</li>
+                    <li class="township-feature">3 social media posts</li>
+                    <li class="township-feature">1 ad campaign setup</li>
+                </ul>
+                <button class="cta-button township-cta select-township" data-package="Local Business Boost" data-price="R3,500 (one-time)">Select Package</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Form -->
+    <div class="modal" id="form-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Request This Package</h2>
+            <form id="package-form">
+                <div class="form-group">
+                    <label class="form-label" for="service-name">Selected Service/Package</label>
+                    <input type="text" class="form-control" id="service-name" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="service-price">Price</label>
+                    <input type="text" class="form-control" id="service-price" readonly>
+                </div>
+                <div class="form-group" id="features-section">
+                    <label class="form-label">Included Features</label>
+                    <div class="selected-features" id="selected-features"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="client-name">Your Name</label>
+                    <input type="text" class="form-control" id="client-name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="client-email">Email Address</label>
+                    <input type="email" class="form-control" id="client-email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="client-phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="client-phone" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="client-message">Additional Requirements</label>
+                    <textarea class="form-control" id="client-message" rows="4"></textarea>
+                    <small class="form-text">Please let us know if you have any specific requirements or questions.</small>
+                </div>
+                <button type="submit" class="submit-btn">Send Request</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tab Switching
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tab = btn.dataset.tab;
+            
+            // Remove active class from all buttons and contents
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding content
+            btn.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+        });
+    });
+
+    // Modal functionality
+    const modal = document.getElementById('form-modal');
+    const closeModal = document.querySelector('.close-modal');
+    
+    // Package selection buttons
+    const packageButtons = document.querySelectorAll('.select-package');
+    const serviceButtons = document.querySelectorAll('.select-service');
+    const addonButtons = document.querySelectorAll('.select-addon');
+    const townshipButton = document.querySelector('.select-township');
+    
+    // Form elements
+    const serviceName = document.getElementById('service-name');
+    const servicePrice = document.getElementById('service-price');
+    const selectedFeatures = document.getElementById('selected-features');
+    const packageForm = document.getElementById('package-form');
+
+    // Features for each package
+    const packageFeatures = {
+        "Basic Web Boost": [
+            "5-page responsive website",
+            "Free template + customization",
+            "1-month basic SEO",
+            "2 product photos"
+        ],
+        "Growth Starter": [
+            "5-page responsive website",
+            "Free template + customization",
+            "3-month SEO",
+            "5 product photos",
+            "1 social media setup (FB/IG)"
+        ],
+        "Premium Digital": [
+            "Custom website (advanced HTML/CSS)",
+            "6-month SEO",
+            "10 product photos",
+            "3-month social media management (8 posts/month)",
+            "Google Ads setup"
+        ],
+        "Local Business Boost": [
+            "Mobile-friendly 3-page website",
+            "Google My Business setup",
+            "1-month local SEO",
+            "3 social media posts",
+            "1 ad campaign setup"
+        ]
+    };
+
+    // Open modal and populate form when package is selected
+    function selectOption(name, price, features = []) {
+        // Populate form fields
+        serviceName.value = name;
+        servicePrice.value = price;
         
-        <!-- Package Deals -->
-        <div class="pricing-tier">
-            <div class="package-card" style="border-color: #4b7bec;">
-                <h3>Basic Web Boost</h3>
-                <div class="price-range">R2,500 – R4,000</div>
-                <ul>
-                    <li>5-page responsive website</li>
-                    <li>1-month basic SEO</li>
-                    <li>2 product photos</li>
-                </ul>
-            </div>
+        // Clear and repopulate features
+        selectedFeatures.innerHTML = '';
+        
+        if (features.length > 0) {
+            features.forEach(feature => {
+                const featureElem = document.createElement('div');
+                featureElem.classList.add('selected-feature');
+                featureElem.textContent = feature;
+                selectedFeatures.appendChild(featureElem);
+            });
+            document.getElementById('features-section').style.display = 'block';
+        } else {
+            document.getElementById('features-section').style.display = 'none';
+        }
+        
+        // Show modal
+        modal.style.display = 'block';
+        setTimeout(() => modal.classList.add('active'), 10);
+    }
 
-            <div class="package-card popular" style="border-color: #26de81;">
-                <h3>Growth Starter</h3>
-                <div class="price-range">R6,000 – R8,000</div>
-                <ul>
-                    <li>Includes Basic Web Boost</li>
-                    <li>3-month SEO</li>
-                    <li>5 product photos</li>
-                    <li>Social media setup</li>
-                </ul>
-            </div>
+    // Event listeners for package buttons
+    packageButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const packageName = button.dataset.package;
+            const packagePrice = button.dataset.price;
+            selectOption(packageName, packagePrice, packageFeatures[packageName]);
+        });
+    });
 
-            <div class="package-card" style="border-color: #a55eea;">
-                <h3>Premium Digital</h3>
-                <div class="price-range">R12,000+</div>
-                <ul>
-                    <li>Custom website development</li>
-                    <li>6-month SEO</li>
-                    <li>10 product photos</li>
-                    <li>Social media management</li>
-                </ul>
-            </div>
-        </div>
+    // Event listeners for service buttons
+    serviceButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const serviceName = button.dataset.service;
+            const servicePrice = button.dataset.price;
+            selectOption(serviceName, servicePrice);
+        });
+    });
 
-        <!-- Township Special -->
-        <div class="special-package" style="background: #f7b73122;">
-            <h3>Local Business Boost (R3,500)</h3>
-            <div class="package-details">
-                <ul>
-                    <li>Mobile-friendly 3-page website</li>
-                    <li>Google My Business setup</li>
-                    <li>3 social media posts + 1 ad campaign</li>
-                </ul>
-            </div>
-        </div>
+    // Event listeners for addon buttons
+    addonButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const addonName = button.dataset.addon;
+            const addonPrice = button.dataset.price;
+            selectOption(addonName, addonPrice);
+        });
+    });
 
-        <!-- Single Services & Add-Ons -->
-        <div class="service-grid">
-            <div class="service-category">
-                <h4>Single Services</h4>
-                <ul>
-                    <li>Web Design: R1,500 – R4,000</li>
-                    <li>SEO Optimization: R800 – R1,500/mo</li>
-                    <li>Product Photography: R150 – R300/photo</li>
-                </ul>
-            </div>
+    // Event listener for township button
+    townshipButton.addEventListener('click', () => {
+        const packageName = townshipButton.dataset.package;
+        const packagePrice = townshipButton.dataset.price;
+        selectOption(packageName, packagePrice, packageFeatures[packageName]);
+    });
 
-            <div class="service-category">
-                <h4>Add-Ons</h4>
-                <ul>
-                    <li>Domain + Hosting: R500</li>
-                    <li>WhatsApp Integration: R200</li>
-                    <li>Analytics Reports: R300/mo</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+    // Close modal
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('active');
+        setTimeout(() => modal.style.display = 'none', 300);
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+    });
+
+    // Form submission
+    packageForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = {
+            service: document.getElementById('service-name').value,
+            price: document.getElementById('service-price').value,
+            name: document.getElementById('client-name').value,
+            email: document.getElementById('client-email').value,
+            phone: document.getElementById('client-phone').value,
+            message: document.getElementById('client-message').value
+        };
+        
+        // Here you would normally send this data to your server
