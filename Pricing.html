@@ -10,81 +10,700 @@
 </head>
 <body>
     <div class="container">
-        <!-- Existing Pricing Cards (Updated Colors) -->
-        <!-- ... (keep your existing card structure) ... -->
-    </div>
+        <header>
+            <h1>Pricing Plans</h1>
+            <p class="subtitle">Choose the perfect plan for your business needs. All plans include expert support and regular updates.</p>
+        </header>
 
-    <!-- New Pricing Section -->
-    <div class="pricing-section">
-        <h2>Digital Marketing Packages</h2>
+
         
-        <!-- Package Deals -->
-        <div class="pricing-tier">
-            <div class="package-card" style="border-color: #4b7bec;">
-                <h3>Basic Web Boost</h3>
-                <div class="price-range">R2,500 – R4,000</div>
-                <ul>
-                    <li>5-page responsive website</li>
-                    <li>1-month basic SEO</li>
-                    <li>2 product photos</li>
-                </ul>
-            </div>
 
-            <div class="package-card popular" style="border-color: #26de81;">
-                <h3>Growth Starter</h3>
-                <div class="price-range">R6,000 – R8,000</div>
-                <ul>
-                    <li>Includes Basic Web Boost</li>
-                    <li>3-month SEO</li>
-                    <li>5 product photos</li>
-                    <li>Social media setup</li>
-                </ul>
-            </div>
 
-            <div class="package-card" style="border-color: #a55eea;">
-                <h3>Premium Digital</h3>
-                <div class="price-range">R12,000+</div>
-                <ul>
-                    <li>Custom website development</li>
-                    <li>6-month SEO</li>
-                    <li>10 product photos</li>
-                    <li>Social media management</li>
-                </ul>
+    <style>
+        :root {
+            --primary: #4a6cf7;
+            --primary-dark: #3858d6;
+            --secondary: #ff6b6b;
+            --dark: #111827;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --background: #f3f4f6;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .pricing-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .pricing-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 1rem auto;
+            font-size: 1.1rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background-color: white;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(74, 108, 247, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pricing-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .price-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            padding: 2rem;
+            width: 100%;
+            max-width: 350px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .price-card.popular::before {
+            content: 'Popular';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.2rem 2rem;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+            width: 150px;
+            text-align: center;
+        }
+
+        .price-card .card-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .price-card .card-header h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-card .price-range {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-card .price-subtitle {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .price-card .features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .price-card .features li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .price-card .features li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .price-card .btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .price-card .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            padding: 2rem;
+            position: relative;
+            animation: modalOpen 0.4s ease;
+        }
+
+        @keyframes modalOpen {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .township-card {
+            border: 2px solid var(--secondary);
+            position: relative;
+        }
+
+        .township-card .card-header h3 {
+            color: var(--secondary);
+        }
+
+        .township-card .price {
+            color: var(--secondary);
+        }
+
+        .special-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="pricing-header">
+            <h1>Our Pricing Plans</h1>
+            <p>Choose the perfect plan for your business needs with our flexible pricing options.</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="packages">Package Deals</button>
+            <button class="tab-btn" data-tab="single">Single Services</button>
+            <button class="tab-btn" data-tab="addons">Add-Ons</button>
+            <button class="tab-btn" data-tab="township">Township Special</button>
+        </div>
+
+        <!-- Package Deals Tab -->
+        <div class="tab-content active" id="packages">
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>Basic Web Boost</h3>
+                        <div class="price-range">R2,500 - R4,000</div>
+                        <p class="price-subtitle">One-time payment</p>
+                    </div>
+                    <ul class="features">
+                        <li>5-page responsive website (free template + customization)</li>
+                        <li>1-month basic SEO optimization</li>
+                        <li>2 professional product photos</li>
+                        <li>Mobile-friendly design</li>
+                        <li>Contact form integration</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Basic Web Boost')">Get Started</button>
+                </div>
+
+                <div class="price-card popular">
+                    <div class="card-header">
+                        <h3>Growth Starter</h3>
+                        <div class="price-range">R6,000 - R8,000</div>
+                        <p class="price-subtitle">One-time payment</p>
+                    </div>
+                    <ul class="features">
+                        <li>All features in Basic Web Boost</li>
+                        <li>Extended 3-month SEO campaign</li>
+                        <li>5 professional product photos</li>
+                        <li>Social media setup (Facebook/Instagram)</li>
+                        <li>Custom contact forms and lead capture</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Growth Starter')">Get Started</button>
+                </div>
+
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>Premium Digital</h3>
+                        <div class="price-range">R12,000+</div>
+                        <p class="price-subtitle">One-time payment</p>
+                    </div>
+                    <ul class="features">
+                        <li>Custom website (advanced HTML/CSS)</li>
+                        <li>6-month comprehensive SEO</li>
+                        <li>10 professional product photos</li>
+                        <li>3-month social media management (8 posts/month)</li>
+                        <li>Google Ads setup and optimization</li>
+                        <li>Monthly performance reports</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Premium Digital')">Get Started</button>
+                </div>
             </div>
         </div>
 
-        <!-- Township Special -->
-        <div class="special-package" style="background: #f7b73122;">
-            <h3>Local Business Boost (R3,500)</h3>
-            <div class="package-details">
-                <ul>
-                    <li>Mobile-friendly 3-page website</li>
-                    <li>Google My Business setup</li>
-                    <li>3 social media posts + 1 ad campaign</li>
-                </ul>
+        <!-- Single Services Tab -->
+        <div class="tab-content" id="single">
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>Web Design</h3>
+                        <div class="price-range">R1,500 - R4,000</div>
+                        <p class="price-subtitle">Based on complexity</p>
+                    </div>
+                    <ul class="features">
+                        <li>Responsive design</li>
+                        <li>Custom or template options</li>
+                        <li>Mobile optimization</li>
+                        <li>Basic SEO setup</li>
+                        <li>Contact form integration</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Web Design')">Get Started</button>
+                </div>
+
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>SEO Optimization</h3>
+                        <div class="price-range">R800 - R1,500</div>
+                        <p class="price-subtitle">Per month</p>
+                    </div>
+                    <ul class="features">
+                        <li>Keyword research and optimization</li>
+                        <li>On-page SEO improvements</li>
+                        <li>Content optimization</li>
+                        <li>Local SEO setup</li>
+                        <li>Monthly performance reports</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('SEO Optimization')">Get Started</button>
+                </div>
+
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>Product Photography</h3>
+                        <div class="price-range">R150 - R300</div>
+                        <p class="price-subtitle">Per photo</p>
+                    </div>
+                    <ul class="features">
+                        <li>Professional lighting setup</li>
+                        <li>High-resolution images</li>
+                        <li>Basic photo editing</li>
+                        <li>Multiple angles available</li>
+                        <li>Web-optimized formats</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Product Photography')">Get Started</button>
+                </div>
+            </div>
+
+            <div class="pricing-cards" style="margin-top: 2rem;">
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>Social Media Ads</h3>
+                        <div class="price-range">R1,500 + R300/day</div>
+                        <p class="price-subtitle">Setup fee + management</p>
+                    </div>
+                    <ul class="features">
+                        <li>Ad campaign setup</li>
+                        <li>Audience targeting</li>
+                        <li>Ad creative design</li>
+                        <li>Performance monitoring</li>
+                        <li>ROI reporting</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Social Media Ads')">Get Started</button>
+                </div>
+
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>Website Maintenance</h3>
+                        <div class="price-range">R300 - R800</div>
+                        <p class="price-subtitle">Per month</p>
+                    </div>
+                    <ul class="features">
+                        <li>Regular updates and backups</li>
+                        <li>Security monitoring</li>
+                        <li>Content updates (limited)</li>
+                        <li>Technical support</li>
+                        <li>Performance optimization</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Website Maintenance')">Get Started</button>
+                </div>
             </div>
         </div>
 
-        <!-- Single Services & Add-Ons -->
-        <div class="service-grid">
-            <div class="service-category">
-                <h4>Single Services</h4>
-                <ul>
-                    <li>Web Design: R1,500 – R4,000</li>
-                    <li>SEO Optimization: R800 – R1,500/mo</li>
-                    <li>Product Photography: R150 – R300/photo</li>
-                </ul>
-            </div>
+        <!-- Add-Ons Tab -->
+        <div class="tab-content" id="addons">
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>Domain + Hosting Setup</h3>
+                        <div class="price">R500</div>
+                        <p class="price-subtitle">One-time fee</p>
+                    </div>
+                    <ul class="features">
+                        <li>Domain name registration</li>
+                        <li>Hosting account setup</li>
+                        <li>DNS configuration</li>
+                        <li>SSL certificate installation</li>
+                        <li>Email account setup</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Domain + Hosting Setup')">Add This</button>
+                </div>
 
-            <div class="service-category">
-                <h4>Add-Ons</h4>
-                <ul>
-                    <li>Domain + Hosting: R500</li>
-                    <li>WhatsApp Integration: R200</li>
-                    <li>Analytics Reports: R300/mo</li>
-                </ul>
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>WhatsApp Business Integration</h3>
+                        <div class="price">R200</div>
+                        <p class="price-subtitle">One-time fee</p>
+                    </div>
+                    <ul class="features">
+                        <li>WhatsApp Business account setup</li>
+                        <li>Website integration</li>
+                        <li>Custom greeting messages</li>
+                        <li>Quick reply templates</li>
+                        <li>Setup instructions and training</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('WhatsApp Business Integration')">Add This</button>
+                </div>
+
+                <div class="price-card">
+                    <div class="card-header">
+                        <h3>Monthly Analytics Report</h3>
+                        <div class="price">R300</div>
+                        <p class="price-subtitle">Per month</p>
+                    </div>
+                    <ul class="features">
+                        <li>Detailed traffic analysis</li>
+                        <li>Conversion tracking</li>
+                        <li>User behavior insights</li>
+                        <li>Competitor benchmarking</li>
+                        <li>Improvement recommendations</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Monthly Analytics Report')">Add This</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Township Special Tab -->
+        <div class="tab-content" id="township">
+            <div class="pricing-cards">
+                <div class="price-card township-card">
+                    <div class="special-badge">Special Offer</div>
+                    <div class="card-header">
+                        <h3>Local Business Boost</h3>
+                        <div class="price">R3,500</div>
+                        <p class="price-subtitle">One-time payment</p>
+                    </div>
+                    <ul class="features">
+                        <li>Mobile-friendly 3-page website</li>
+                        <li>Google My Business setup</li>
+                        <li>1-month local SEO optimization</li>
+                        <li>3 social media posts creation</li>
+                        <li>1 ad campaign setup</li>
+                        <li>WhatsApp Business integration</li>
+                    </ul>
+                    <button class="btn" style="background-color: var(--secondary);" onclick="openModal('Local Business Boost')">Get Started</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Form -->
+        <div class="modal" id="enquiryModal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <h2>Request More Information</h2>
+                <form id="enquiryForm" action="https://formspree.io/f/your-formspree-id" method="POST">
+                    <input type="hidden" id="selectedPackage" name="selectedPackage">
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="business">Business Name</label>
+                        <input type="text" id="business" name="business">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Additional Requirements</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Enquiry</button>
+                </form>
             </div>
         </div>
     </div>
+
+    <script>
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('enquiryModal');
+        const selectedPackageInput = document.getElementById('selectedPackage');
+
+        function openModal(packageName) {
+            modal.style.display = 'flex';
+            selectedPackageInput.value = packageName;
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('enquiryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const formData = new FormData(this);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+            
+            // You can modify the form action dynamically to match your index.html form
+            // This is where you'd connect to your existing form
+            const indexFormAction = document.querySelector('#enquiryForm').getAttribute('action');
+            
+            // Submit the form (you can use fetch API or other methods)
+            fetch(indexFormAction, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Thank you for your enquiry! We will contact you soon.');
+                    closeModal();
+                    document.getElementById('enquiryForm').reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your enquiry. Please try again.');
+            });
+        });
+    </script>
 </body>
 </html>
