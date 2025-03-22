@@ -8,360 +8,15 @@
     <!-- Back Button -->
     <a href="index.html" class="back-button">← Back to Home</a>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Pricing Plans</h1>
-            <p class="subtitle">Choose the perfect plan for your business needs. All plans include expert support and regular updates.</p>
-        </header>
-
-
-        
-
-
-    <style>
-        :root {
-            --primary: #4a6cf7;
-            --primary-dark: #3858d6;
-            --secondary: #ff6b6b;
-            --dark: #111827;
-            --light: #f9fafb;
-            --gray: #6b7280;
-            --background: #f3f4f6;
-            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--background);
-            padding: 2rem 1rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .pricing-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            position: relative;
-            display: inline-block;
-        }
-
-        .pricing-header h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 10px;
-        }
-
-        .pricing-header p {
-            color: var(--gray);
-            max-width: 700px;
-            margin: 1rem auto;
-            font-size: 1.1rem;
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            gap: 1rem;
-        }
-
-        .tab-btn {
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            background-color: white;
-            color: var(--dark);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .tab-btn.active {
-            background-color: var(--primary);
-            color: white;
-            box-shadow: 0 4px 10px rgba(74, 108, 247, 0.3);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .pricing-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .price-card {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: var(--card-shadow);
-            padding: 2rem;
-            width: 100%;
-            max-width: 350px;
-            position: relative;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .price-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .price-card.popular::before {
-            content: 'Popular';
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            background-color: var(--secondary);
-            color: white;
-            padding: 0.2rem 2rem;
-            transform: rotate(45deg);
-            font-size: 0.8rem;
-            font-weight: bold;
-            width: 150px;
-            text-align: center;
-        }
-
-        .price-card .card-header {
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .price-card .card-header h3 {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .price-card .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .price-card .price-range {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .price-card .price-subtitle {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        .price-card .features {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-
-        .price-card .features li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .price-card .features li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .price-card .btn {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            background-color: var(--primary);
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        .price-card .btn:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            border-radius: 15px;
-            max-width: 500px;
-            width: 90%;
-            padding: 2rem;
-            position: relative;
-            animation: modalOpen 0.4s ease;
-        }
-
-        @keyframes modalOpen {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .close-modal {
-            position: absolute;
-            right: 20px;
-            top: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--gray);
-        }
-
-        .modal-content h2 {
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            background-color: var(--primary);
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .township-card {
-            border: 2px solid var(--secondary);
-            position: relative;
-        }
-
-        .township-card .card-header h3 {
-            color: var(--secondary);
-        }
-
-        .township-card .price {
-            color: var(--secondary);
-        }
-
-        .special-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: var(--secondary);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .pricing-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tab-btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-    </style>
-</head>
+<body></body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans</title>
 <body>
     <div class="container">
         <div class="pricing-header">
             <h1>Our Pricing Plans</h1>
-            <p>Choose the perfect plan for your business needs with our flexible pricing options.</p>
+            <p>Choose the perfect plan for your business needs with our flexible pricing options. <br> <strong>Payment Monthly plans also available!</strong> 
         </div>
 
         <div class="tabs">
@@ -377,13 +32,13 @@
                 <div class="price-card">
                     <div class="card-header">
                         <h3>Basic Web Boost</h3>
-                        <div class="price-range">R2,500 - R4,000</div>
+                        <div class="price-range">R2,000 - R4,000</div>
                         <p class="price-subtitle">One-time payment</p>
                     </div>
                     <ul class="features">
                         <li>5-page responsive website (free template + customization)</li>
                         <li>1-month basic SEO optimization</li>
-                        <li>2 professional product photos</li>
+                        <li>5 professional product photos</li>
                         <li>Mobile-friendly design</li>
                         <li>Contact form integration</li>
                     </ul>
@@ -399,7 +54,7 @@
                     <ul class="features">
                         <li>All features in Basic Web Boost</li>
                         <li>Extended 3-month SEO campaign</li>
-                        <li>5 professional product photos</li>
+                        <li>10 professional product photos</li>
                         <li>Social media setup (Facebook/Instagram)</li>
                         <li>Custom contact forms and lead capture</li>
                     </ul>
@@ -415,7 +70,7 @@
                     <ul class="features">
                         <li>Custom website (advanced HTML/CSS)</li>
                         <li>6-month comprehensive SEO</li>
-                        <li>10 professional product photos</li>
+                        <li>20 professional product photos</li>
                         <li>3-month social media management (8 posts/month)</li>
                         <li>Google Ads setup and optimization</li>
                         <li>Monthly performance reports</li>
@@ -463,7 +118,7 @@
                 <div class="price-card">
                     <div class="card-header">
                         <h3>Product Photography</h3>
-                        <div class="price-range">R150 - R300</div>
+                        <div class="price-range">R100 - R150</div>
                         <p class="price-subtitle">Per photo</p>
                     </div>
                     <ul class="features">
@@ -481,7 +136,7 @@
                 <div class="price-card">
                     <div class="card-header">
                         <h3>Social Media Ads</h3>
-                        <div class="price-range">R1,500 + R300/day</div>
+                        <div class="price-range">R1,000 + R300/day</div>
                         <p class="price-subtitle">Setup fee + management</p>
                     </div>
                     <ul class="features">
@@ -626,84 +281,21 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Tab functionality
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding content
-                btn.classList.add('active');
-                const tabId = btn.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-
-        // Modal functionality
-        const modal = document.getElementById('enquiryModal');
-        const selectedPackageInput = document.getElementById('selectedPackage');
-
-        function openModal(packageName) {
-            modal.style.display = 'flex';
-            selectedPackageInput.value = packageName;
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        }
-
-        // Close modal when clicking outside of it
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Handle form submission
-        document.getElementById('enquiryForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Get form values
-            const formData = new FormData(this);
-            const formObject = {};
-            formData.forEach((value, key) => {
-                formObject[key] = value;
-            });
-            
-            // You can modify the form action dynamically to match your index.html form
-            // This is where you'd connect to your existing form
-            const indexFormAction = document.querySelector('#enquiryForm').getAttribute('action');
-            
-            // Submit the form (you can use fetch API or other methods)
-            fetch(indexFormAction, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Thank you for your enquiry! We will contact you soon.');
-                    closeModal();
-                    document.getElementById('enquiryForm').reset();
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your enquiry. Please try again.');
-            });
-        });
-    </script>
+    
+    <!-- SEO Information Button -->
+    <div class="seo-info-container">
+        <button class="seo-info-btn">What is SEO?</button>
+        <div class="seo-info-popup">
+            <h3>SEO Explained Simply</h3>
+            <p>SEO (Search Engine Optimization) helps your website show up when people search on Google.</p>
+            <ul>
+                <li><strong>More Visitors:</strong> Good SEO brings more people to your website</li>
+                <li><strong>Better Business:</strong> Helps customers find you instead of competitors</li>
+                <li><strong>No Ads Needed:</strong> Get traffic without paying for Google ads</li>
+            </ul>
+            <p>Think of it like putting your business on the main street where everyone can see it!</p>
+        </div>
+    </div>
+    <script src="pricing.js"></script>
 </body>
 </html>
